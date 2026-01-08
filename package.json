@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:md": "markdownlint \"**/*.md\" --ignore node_modules",
-    "fix:md": "markdownlint \"**/*.md\" --ignore node_modules --fix"
+    "fix:md": "markdownlint \"**/*.md\" --ignore node_modules --fix",
+    "snyk:test": "snyk test",
+    "snyk:monitor": "snyk monitor",
+    "security": "npm run snyk:test"
   },
   "repository": {
     "type": "git",
