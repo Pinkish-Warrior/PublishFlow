@@ -98,10 +98,10 @@ export const authOptions: NextAuthOptions = {
 
       try {
         // Use access token as unique identifier since we only have posting scope
-        const linkedinId = account.providerAccountId || (profile.id as string) || account.access_token?.substring(0, 20) || 'temp-id';
-        const email = (profile.email as string | null) || null;
-        const name = (profile.name as string) || 'LinkedIn User';
-        const image = (profile.image as string | null) || null;
+        const linkedinId = account.providerAccountId || ((profile as any).id as string) || account.access_token?.substring(0, 20) || 'temp-id';
+        const email = ((profile as any).email as string | null) || null;
+        const name = ((profile as any).name as string) || 'LinkedIn User';
+        const image = ((profile as any).image as string | null) || null;
 
         // Store or update user with LinkedIn data and tokens
         await prisma.user.upsert({

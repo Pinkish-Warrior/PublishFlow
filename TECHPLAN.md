@@ -11,6 +11,7 @@ Build a compliance-first LinkedIn content scheduling and publishing tool with Ne
 - **Authentication**: NextAuth.js with LinkedIn OAuth
 - **AI**: Anthropic Claude API
 - **Styling**: Tailwind CSS
+- **Animations**: Framer Motion (parallax & UI transitions)
 - **Deployment**: Vercel
 
 ## Core Requirements
@@ -159,25 +160,31 @@ PublishFlow/
 
 ## Implementation Phases
 
-### Phase 1: Foundation (Days 1-2)
+### Phase 1: Foundation (Days 1-2) ✅ COMPLETE
 
-1. Initialize Next.js: `npx create-next-app@latest . --typescript --tailwind --app --src-dir`
-2. Install dependencies: `prisma @prisma/client next-auth @auth/prisma-adapter zod @anthropic-ai/sdk`
-3. Setup Prisma: `npx prisma init --datasource-provider sqlite`
-4. Create schema.prisma with User, Post, AuditLog models
-5. Run migration: `npx prisma migrate dev --name init`
-6. Create `/src/lib/prisma.ts` singleton
-7. Create `.env.example` and `.env.local`
+1. Initialize Next.js: `npx create-next-app@latest . --typescript --tailwind --app --src-dir` ✓
+2. Install dependencies: `prisma @prisma/client next-auth @auth/prisma-adapter zod @anthropic-ai/sdk framer-motion` ✓
+3. Setup Prisma: `npx prisma init --datasource-provider sqlite` ✓
+4. Create schema.prisma with User, Post, AuditLog models ✓
+5. Run migration: `npx prisma migrate dev --name init` ✓
+6. Create `/src/lib/prisma.ts` singleton ✓
+7. Create `.env.example` and `.env.local` ✓
 
-### Phase 2: Authentication (Days 3-4)
+### Phase 2: Authentication (Days 3-4) ✅ COMPLETE
 
-1. Create `/src/lib/auth.ts` with NextAuth config
-2. Create `/src/app/api/auth/[...nextauth]/route.ts`
-3. Configure LinkedInProvider with scopes
-4. Implement token storage callbacks (JWT + database)
-5. Create `/src/middleware.ts` for route protection
-6. Build landing page with "Sign in with LinkedIn"
-7. Test OAuth flow
+1. Create `/src/lib/auth.ts` with NextAuth config ✓
+2. Create `/src/app/api/auth/[...nextauth]/route.ts` ✓
+3. Configure custom LinkedIn OAuth provider (only `w_member_social` scope) ✓
+4. Implement token storage callbacks (JWT + database) ✓
+5. Create `/src/middleware.ts` for route protection ✓
+6. Build landing page with "Sign in with LinkedIn" ✓
+7. Test OAuth flow ✓
+8. **Enhancement**: Add Framer Motion parallax effects to landing page ✓
+   - Parallax background layer with smooth scroll
+   - Floating decorative LinkedIn icon
+   - Staggered entrance animations for hero content
+   - Scroll-triggered animations for feature cards
+   - Respects `prefers-reduced-motion` for accessibility
 
 ### Phase 3: Post Management (Days 5-7)
 
