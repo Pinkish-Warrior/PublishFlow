@@ -24,6 +24,8 @@ Thumbs.db
 dist/
 build/
 *.log
+.next/
+out/
 
 # Optional npm cache directory
 .npm
@@ -37,3 +39,5 @@ coverage/
 
 # Project planning (work in progress)
 NEXTSTEP.md
+
+/src/generated/prisma

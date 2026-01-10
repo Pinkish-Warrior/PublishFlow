@@ -1,0 +1,133 @@
+// PublishFlow Database Schema
+// SQLite database for compliance-first LinkedIn content scheduling
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User model - stores authenticated LinkedIn users
+model User {
+  id            String    @id @default(cuid())
+  email         String?   @unique
+  name          String?
+  linkedinId    String    @unique
+  image         String?
+
+  // OAuth tokens (should be encrypted in production)
+  accessToken   String?
+  refreshToken  String?
+  tokenExpiry   DateTime?
+
+  // Timestamps
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastLoginAt   DateTime?
+
+  // Relations
+  posts         Post[]
+  auditLogs     AuditLog[]
+
+  @@index([linkedinId])
+  @@index([email])
+}
+
+// Post model - stores draft and scheduled posts
+model Post {
+  id            String     @id @default(cuid())
+
+  // Content
+  content       String
+
+  // Status tracking
+  status        PostStatus @default(DRAFT)
+
+  // Scheduling
+  scheduledFor  DateTime?
+
+  // LinkedIn publishing
+  publishedAt   DateTime?
+  linkedinId    String?
+  linkedinUrl   String?
+
+  // AI assistance tracking
+  aiAssisted    Boolean    @default(false)
+  aiPrompt      String?
+
+  // Ownership
+  userId        String
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  // Relations
+  auditLogs     AuditLog[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([scheduledFor])
+}
+
+// Post status enum
+enum PostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+  FAILED
+  CANCELLED
+}
+
+// Audit log model - compliance requirement
+model AuditLog {
+  id            String      @id @default(cuid())
+
+  // Action tracking
+  action        AuditAction
+  entityType    String
+  entityId      String
+
+  // Context
+  metadata      String?
+  ipAddress     String?
+  userAgent     String?
+
+  // Result
+  success       Boolean     @default(true)
+  errorMessage  String?
+
+  // Ownership
+  userId        String?
+  user          User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  postId        String?
+  post          Post?       @relation(fields: [postId], references: [id], onDelete: SetNull)
+
+  // Timestamp
+  createdAt     DateTime    @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@index([entityType, entityId])
+}
+
+// Audit action enum
+enum AuditAction {
+  USER_LOGIN
+  USER_LOGOUT
+  POST_CREATED
+  POST_UPDATED
+  POST_DELETED
+  POST_SCHEDULED
+  POST_PUBLISHED
+  POST_PUBLISH_FAILED
+  POST_CANCELLED
+  AI_SUGGESTION_REQUESTED
+  TOKEN_REFRESHED
+}
