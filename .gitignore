@@ -43,3 +43,5 @@ NEXTSTEP.md
 # Prisma
 /src/generated/prisma
 prisma.config.ts
+prisma/*.db
+prisma/*.db-journal
