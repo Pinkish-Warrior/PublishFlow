@@ -40,4 +40,6 @@ coverage/
 # Project planning (work in progress)
 NEXTSTEP.md
 
+# Prisma
 /src/generated/prisma
+prisma.config.ts
