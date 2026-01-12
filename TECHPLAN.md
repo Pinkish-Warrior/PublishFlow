@@ -280,6 +280,44 @@ PublishFlow/
 
 ## Environment Variables
 
+### Doppler Secret Management ✅ INTEGRATED
+
+This project uses **Doppler** for secure secret management across all environments. Doppler eliminates the need for `.env` files and provides:
+
+- Work from any machine without managing `.env` files
+- Never accidentally commit secrets to git
+- Easy team collaboration with controlled access
+- Separate environments (dev/staging/prod)
+- Audit trails for secret access
+
+#### Setup Instructions
+
+1. **Install Doppler CLI** (if not installed):
+   ```bash
+   brew install dopplerhq/cli/doppler
+   ```
+
+2. **Authenticate**:
+   ```bash
+   doppler login
+   doppler whoami  # Verify authentication
+   ```
+
+3. **Setup Project** (already configured for this repo):
+   ```bash
+   cd /path/to/PublishFlow
+   doppler setup
+   # Select: publishflow > dev
+   ```
+
+4. **Run Application**:
+   ```bash
+   npm run dev        # Uses Doppler automatically
+   npm run dev:local  # Fallback without Doppler
+   ```
+
+#### Required Secrets (Already Configured in Doppler)
+
 ```bash
 # Database
 DATABASE_URL="file:./dev.db"
@@ -295,9 +333,46 @@ LINKEDIN_CLIENT_SECRET="your_client_secret"
 # Anthropic Claude API
 ANTHROPIC_API_KEY="your_anthropic_api_key"
 
-# Optional: Token encryption (generate: openssl rand -hex 32)
+# Token encryption (generate: openssl rand -hex 32)
 TOKEN_ENCRYPTION_KEY="your_32_byte_hex_key"
 ```
+
+**Note**: All secrets are stored in Doppler. The `.env` file is no longer needed for development. See [DOPPLER_SETUP.md](./DOPPLER_SETUP.md) for detailed setup guide.
+
+### Snyk Security Monitoring ✅ INTEGRATED
+
+This project uses **Snyk** for continuous dependency security monitoring:
+
+- **Current Status**: No vulnerabilities detected (145 dependencies tested)
+- **Monitoring**: Automated daily scans enabled
+- **Dashboard**: [View Security Report](https://app.snyk.io/org/pinkish-warrior/project/64db0238-fd04-40d5-83a7-cc999c9333a0)
+
+#### Running Security Scans
+
+```bash
+# Test for vulnerabilities
+npm run security
+# or
+npm run snyk:test
+
+# Update monitoring snapshot
+npm run snyk:monitor
+```
+
+#### Setup for New Team Members
+
+1. **Authenticate Snyk CLI**:
+   ```bash
+   snyk auth
+   # Opens browser for authentication
+   ```
+
+2. **Run initial scan**:
+   ```bash
+   npm run security
+   ```
+
+**Note**: Snyk sends email notifications for newly discovered vulnerabilities. See [SECURITY.md](./SECURITY.md) for complete security documentation.
 
 ## LinkedIn API Integration Details
 
@@ -410,30 +485,52 @@ Body:
 
 ## Security Considerations
 
-1. **Token Encryption**:
+**For complete security documentation, see [SECURITY.md](./SECURITY.md)**
+
+### Key Security Measures
+
+1. **Dependency Security** ✅
+   - Snyk monitoring: 0 vulnerabilities detected
+   - Automated daily scans
+   - Real-time alerts for new vulnerabilities
+
+2. **Secret Management** ✅
+   - Doppler for all environment variables
+   - No `.env` files in git
+   - Encrypted secret storage with audit trails
+
+3. **Token Encryption**:
    - Implement encryption for `accessToken` and `refreshToken` before storing
    - Use `crypto` module with AES-256-GCM
    - Store encryption key in `TOKEN_ENCRYPTION_KEY` env var
 
-2. **Input Validation**:
+4. **Input Validation**:
    - Use Zod schemas for all API inputs
    - Validate content length (1-3000 chars)
    - Sanitize user input (prevent XSS)
 
-3. **Rate Limiting**:
+5. **Rate Limiting**:
    - AI suggestions: 10 per hour per user
    - Publishing: 20 per day per user (LinkedIn's limit)
    - Implement in-memory rate limit tracker
 
-4. **CORS & Security Headers**:
+6. **CORS & Security Headers**:
    - Add security headers in `next.config.js`
    - X-Content-Type-Options: nosniff
    - X-Frame-Options: DENY
    - X-XSS-Protection: 1; mode=block
 
-5. **Route Protection**:
+7. **Route Protection**:
    - Middleware protects all `/dashboard`, `/posts`, `/audit` routes
    - API routes check session before execution
+
+### Security Testing
+
+Run security checks before deployment:
+```bash
+npm run security        # Snyk vulnerability scan
+npm run lint            # Code quality checks
+```
 
 ## Compliance Checklist
 
