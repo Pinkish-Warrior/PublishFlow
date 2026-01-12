@@ -45,3 +45,4 @@ NEXTSTEP.md
 prisma.config.ts
 prisma/*.db
 prisma/*.db-journal
+.env.backup*
