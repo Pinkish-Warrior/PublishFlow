@@ -53,27 +53,29 @@ See [TECHPLAN.md](./TECHPLAN.md) for detailed implementation roadmap.
 
 ## Quick Start
 
-### Prerequisites
+**Choose your setup path:**
+- **Team Members** → Use Doppler (shared secrets)
+- **External Contributors** → Use local .env file
 
+---
+
+### 🔵 For Team Members (With Doppler Access)
+
+**Prerequisites:**
 - Node.js 18+ and npm
-- Doppler CLI (for secret management)
-- LinkedIn Developer App credentials
-- Anthropic API key (for AI features)
+- Doppler CLI
+- Access to PublishFlow Doppler project
 
-### Installation
+**Setup Steps:**
 
-1. **Clone the repository**
+1. **Clone and install**
    ```bash
    git clone https://github.com/Pinkish-Warrior/PublishFlow.git
    cd PublishFlow
-   ```
-
-2. **Install dependencies**
-   ```bash
    npm install
    ```
 
-3. **Setup Doppler** (required for secrets)
+2. **Setup Doppler**
    ```bash
    # Install Doppler CLI
    brew install dopplerhq/cli/doppler
@@ -88,18 +90,73 @@ See [TECHPLAN.md](./TECHPLAN.md) for detailed implementation roadmap.
 
    See [DOPPLER_SETUP.md](./DOPPLER_SETUP.md) for detailed instructions.
 
-4. **Initialize database**
+3. **Initialize database**
    ```bash
    npx prisma migrate dev
    npx prisma generate
    ```
 
-5. **Run development server**
+4. **Run development server**
    ```bash
    npm run dev
    ```
 
    Visit [http://localhost:3000](http://localhost:3000)
+
+---
+
+### 🟢 For External Contributors (Without Doppler)
+
+**Prerequisites:**
+- Node.js 18+ and npm
+- LinkedIn Developer App (create at [developers.linkedin.com](https://www.linkedin.com/developers/apps))
+- Anthropic API key (optional, for AI features)
+
+**Setup Steps:**
+
+1. **Clone and install**
+   ```bash
+   git clone https://github.com/Pinkish-Warrior/PublishFlow.git
+   cd PublishFlow
+   npm install
+   ```
+
+2. **Configure environment variables**
+   ```bash
+   # Copy the example file
+   cp .env.example .env
+
+   # Generate required secrets
+   openssl rand -base64 32  # Copy this for NEXTAUTH_SECRET
+   openssl rand -hex 32     # Copy this for TOKEN_ENCRYPTION_KEY
+
+   # Edit .env and fill in all values
+   nano .env  # or use your preferred editor
+   ```
+
+   **Required setup in `.env`:**
+   - `NEXTAUTH_SECRET` - Generated secret from above
+   - `TOKEN_ENCRYPTION_KEY` - Generated key from above
+   - `LINKEDIN_CLIENT_ID` - From your LinkedIn app
+   - `LINKEDIN_CLIENT_SECRET` - From your LinkedIn app
+   - `ANTHROPIC_API_KEY` - (Optional) For AI features
+
+   See [.env.example](./.env.example) for detailed instructions.
+
+3. **Initialize database**
+   ```bash
+   npx prisma migrate dev
+   npx prisma generate
+   ```
+
+4. **Run development server**
+   ```bash
+   npm run dev:local
+   ```
+
+   Visit [http://localhost:3000](http://localhost:3000)
+
+**Note:** You'll need to create your own LinkedIn Developer App and get approval for the `w_member_social` scope to test publishing features. See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
 
 ## Documentation
 
