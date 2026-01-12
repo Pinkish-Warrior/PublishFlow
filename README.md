@@ -37,7 +37,7 @@ PublishFlow is a Next.js application designed to help professionals schedule and
 - **Phase 8**: Polish & Testing
 - **Phase 9**: Deployment
 
-See [TECHPLAN.md](./TECHPLAN.md) for detailed implementation roadmap.
+See [TECHPLAN.md](./docs/TECHPLAN.md) for detailed implementation roadmap.
 
 ## Tech Stack
 
@@ -88,7 +88,7 @@ See [TECHPLAN.md](./TECHPLAN.md) for detailed implementation roadmap.
    # Select: publishflow > dev
    ```
 
-   See [DOPPLER_SETUP.md](./DOPPLER_SETUP.md) for detailed instructions.
+   See [DOPPLER_SETUP.md](./docs/setup/DOPPLER_SETUP.md) for detailed instructions.
 
 3. **Initialize database**
    ```bash
@@ -163,21 +163,23 @@ See [TECHPLAN.md](./TECHPLAN.md) for detailed implementation roadmap.
 Our documentation is organized to guide you through different aspects of the project:
 
 ### Getting Started
-- **[TECHPLAN.md](./TECHPLAN.md)** - Complete implementation plan and technical architecture
-- **[DOPPLER_SETUP.md](./DOPPLER_SETUP.md)** - Secret management setup guide
-- **[ASIDE.md](./ASIDE.md)** - Project status and completed integrations
+- **[TECHPLAN.md](./docs/TECHPLAN.md)** - Complete implementation plan and technical architecture
+- **[DOPPLER_SETUP.md](./docs/setup/DOPPLER_SETUP.md)** - Secret management setup guide
+- **[ASIDE.md](./docs/PROJECT_STATUS.md)** - Project status and completed integrations
 
 ### Development Workflow
-1. Read [TECHPLAN.md](./TECHPLAN.md) to understand the architecture
-2. Follow [DOPPLER_SETUP.md](./DOPPLER_SETUP.md) to configure secrets
-3. Check [ASIDE.md](./ASIDE.md) for current project status
-4. Review [SECURITY.md](./SECURITY.md) for security best practices
+1. Read [TECHPLAN.md](./docs/TECHPLAN.md) to understand the architecture
+2. Follow [DOPPLER_SETUP.md](./docs/setup/DOPPLER_SETUP.md) to configure secrets
+3. Check [PROJECT_STATUS.md](./docs/PROJECT_STATUS.md) for current project status
+4. Review [SECURITY.md](./docs/SECURITY.md) for security best practices
 
 ### Reference Documentation
-- **[SECURITY.md](./SECURITY.md)** - Security policy, vulnerability reporting, and compliance
+- **[SECURITY.md](./docs/SECURITY.md)** - Security policy, vulnerability reporting, and compliance
 - **[PRIVACY.md](./PRIVACY.md)** - Privacy policy and data handling
-- **[USECASE.md](./USECASE.md)** - Use cases and user scenarios
-- **[JOBSEEKER_GUIDE.md](./JOBSEEKER_GUIDE.md)** - Guide for job seekers using PublishFlow
+- **[USECASE.md](./docs/USECASE.md)** - Use cases and user scenarios
+
+### Guides
+- **[JOBSEEKER_GUIDE.md](./docs/guides/JOBSEEKER_GUIDE.md)** - Guide for job seekers using PublishFlow
 
 ## Development
 
@@ -217,7 +219,7 @@ All secrets are managed through **Doppler**. Required secrets:
 - `ANTHROPIC_API_KEY` - Anthropic API key
 - `TOKEN_ENCRYPTION_KEY` - Token encryption key
 
-See [DOPPLER_SETUP.md](./DOPPLER_SETUP.md) for setup instructions.
+See [DOPPLER_SETUP.md](./docs/setup/DOPPLER_SETUP.md) for setup instructions.
 
 ## Security
 
@@ -230,7 +232,7 @@ We use **Snyk** for continuous security monitoring:
 
 ### Reporting Vulnerabilities
 
-If you discover a security vulnerability, please email [your-security-email@example.com]. See [SECURITY.md](./SECURITY.md) for detailed reporting procedures.
+If you discover a security vulnerability, please email [your-security-email@example.com]. See [SECURITY.md](./docs/SECURITY.md) for detailed reporting procedures.
 
 ### Security Features
 
@@ -253,7 +255,7 @@ PublishFlow is fully compliant with LinkedIn's API Terms of Service:
 - ✅ No data scraping
 - ✅ Approved for `w_member_social` scope
 
-See [SECURITY.md](./SECURITY.md) for complete compliance documentation.
+See [SECURITY.md](./docs/SECURITY.md) for complete compliance documentation.
 
 ## Contributing
 
@@ -325,7 +327,7 @@ ISC
 
 - **Documentation**: Check our comprehensive docs in this repo
 - **Issues**: [GitHub Issues](https://github.com/Pinkish-Warrior/PublishFlow/issues)
-- **Security**: [Security Policy](./SECURITY.md)
+- **Security**: [Security Policy](./docs/SECURITY.md)
 
 ## Acknowledgments
 

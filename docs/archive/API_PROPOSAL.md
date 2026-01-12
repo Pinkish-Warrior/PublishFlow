@@ -1,30 +1,24 @@
-LINKEDIN API USE CASE PROPOSAL
-=============================
+# LinkedIn API Use Case Proposal
 
-Application Name:
-Content Planning & Scheduling Tool
+**Status**: Approved (2026-01-12)
+**Application Name**: PublishFlow
+**Application Type**: Content management and productivity application
 
-Application Type:
-Content management and productivity application
+## Primary Purpose
 
-Primary Purpose:
-To assist LinkedIn members in drafting, reviewing, scheduling, and publishing posts
-in a controlled, user-approved manner.
+To assist LinkedIn members in drafting, reviewing, scheduling, and publishing posts in a controlled, user-approved manner.
 
---------------------------------------------------
+---
 
-1. OVERVIEW
+## 1. Overview
 
-This application is designed to help individual professionals and small teams
-maintain consistent, high-quality LinkedIn posting through structured content
-planning and scheduling.
+This application is designed to help individual professionals and small teams maintain consistent, high-quality LinkedIn posting through structured content planning and scheduling.
 
-The application does not automate engagement, messaging, or interactions.
-It functions strictly as a content drafting and publishing assistant.
+The application does not automate engagement, messaging, or interactions. It functions strictly as a content drafting and publishing assistant.
 
---------------------------------------------------
+---
 
-2. INTENDED USERS
+## 2. Intended Users
 
 The application is intended for:
 - Individual LinkedIn members
@@ -32,12 +26,11 @@ The application is intended for:
 - Administrators of LinkedIn Company Pages (future phase)
 - Small teams managing official content
 
-The application is not intended for mass automation, growth hacking,
-or engagement manipulation.
+The application is not intended for mass automation, growth hacking, or engagement manipulation.
 
---------------------------------------------------
+---
 
-3. PROBLEM STATEMENT
+## 3. Problem Statement
 
 Many professionals struggle to post consistently on LinkedIn due to:
 - Limited time for content planning
@@ -46,9 +39,9 @@ Many professionals struggle to post consistently on LinkedIn due to:
 
 This often leads to irregular posting and reduced content quality.
 
---------------------------------------------------
+---
 
-4. PROPOSED SOLUTION
+## 4. Proposed Solution
 
 The application provides a workflow that allows users to:
 
@@ -60,15 +53,15 @@ The application provides a workflow that allows users to:
 
 The application acts as a content management system, not an automation tool.
 
---------------------------------------------------
+---
 
-5. LINKEDIN API USAGE
+## 5. LinkedIn API Usage
 
-Requested Permissions:
-- w_member_social
+**Requested Permissions**:
+- `w_member_social` ✅ **APPROVED**
 
-(Optional future phase)
-- w_organization_social
+**(Optional future phase)**:
+- `w_organization_social`
 
 The LinkedIn API will be used only to:
 - Publish posts on behalf of authenticated users
@@ -76,9 +69,9 @@ The LinkedIn API will be used only to:
 
 No other LinkedIn APIs will be accessed.
 
---------------------------------------------------
+---
 
-6. AI USAGE DISCLOSURE
+## 6. AI Usage Disclosure
 
 AI is used exclusively for drafting assistance.
 
@@ -91,9 +84,9 @@ Specifically:
 
 AI does not impersonate users or generate content without user intent.
 
---------------------------------------------------
+---
 
-7. USER CONTROL AND SAFEGUARDS
+## 7. User Control and Safeguards
 
 The application enforces:
 - LinkedIn OAuth authentication
@@ -103,9 +96,9 @@ The application enforces:
 
 There is no fully autonomous posting.
 
---------------------------------------------------
+---
 
-8. DATA HANDLING AND SECURITY
+## 8. Data Handling and Security
 
 The application:
 - Stores only minimal post content and scheduling metadata
@@ -114,12 +107,11 @@ The application:
 - Does not resell or share LinkedIn data
 - Allows users to revoke access at any time
 
---------------------------------------------------
+---
 
-9. OPTIONAL USER-PROVIDED DATA
+## 9. Optional User-Provided Data
 
-Users may optionally upload a copy of their own LinkedIn data export
-to personalise drafting assistance.
+Users may optionally upload a copy of their own LinkedIn data export to personalize drafting assistance.
 
 This data:
 - Is uploaded voluntarily by the user
@@ -128,21 +120,21 @@ This data:
 - Is used solely to improve drafting quality
 - Can be deleted by the user at any time
 
---------------------------------------------------
+---
 
-10. WHAT THE APPLICATION DOES NOT DO
+## 10. What the Application Does NOT Do
 
 The application explicitly does not:
 - Send direct messages
 - Auto-like, auto-comment, or auto-follow
 - Scrape LinkedIn profiles or feeds
-- Perform behavioural automation
-- Harvest or analyse third-party profile data
+- Perform behavioral automation
+- Harvest or analyze third-party profile data
 - Simulate human interaction patterns
 
---------------------------------------------------
+---
 
-11. EXAMPLE USER FLOW
+## 11. Example User Flow
 
 1. User authenticates via LinkedIn OAuth
 2. User creates a post draft
@@ -151,26 +143,26 @@ The application explicitly does not:
 5. User confirms publishing or schedules the post
 6. Content is published via the LinkedIn API
 
---------------------------------------------------
+---
 
-12. COMPLIANCE STATEMENT
+## 12. Compliance Statement
 
 The application complies with:
 - LinkedIn API Terms of Use
 - LinkedIn Platform Policies
 - Data protection and user consent requirements
 
-The application uses only approved endpoints and allows LinkedIn
-to revoke access if required.
+The application uses only approved endpoints and allows LinkedIn to revoke access if required.
 
---------------------------------------------------
+---
 
-13. INITIAL ROLLOUT
+## 13. Initial Rollout
 
 - Initial release will be limited and controlled
 - Focus on individual users and personal posting
 - Expansion only after approval and compliance validation
 
---------------------------------------------------
+---
 
-END OF PROPOSAL
+**Last Updated**: 2026-01-12
+**Status**: Historical document - API approval obtained

@@ -37,8 +37,8 @@ Before you begin, make sure you have:
 
 Before contributing, familiarize yourself with:
 - [README.md](./README.md) - Project overview
-- [TECHPLAN.md](./TECHPLAN.md) - Technical architecture and implementation plan
-- [SECURITY.md](./SECURITY.md) - Security policies and compliance requirements
+- [TECHPLAN.md](./docs/TECHPLAN.md) - Technical architecture and implementation plan
+- [SECURITY.md](./docs/SECURITY.md) - Security policies and compliance requirements
 
 ## Development Setup
 
@@ -345,7 +345,7 @@ PublishFlow/
 
 ## Development Phases
 
-See [TECHPLAN.md](./TECHPLAN.md) for complete details.
+See [TECHPLAN.md](./docs/TECHPLAN.md) for complete details.
 
 **Completed:**
 - Phase 1: Foundation (Next.js, Prisma, SQLite)
@@ -367,7 +367,7 @@ See [TECHPLAN.md](./TECHPLAN.md) for complete details.
 
 - **Questions?** Open a [GitHub Discussion](https://github.com/Pinkish-Warrior/PublishFlow/discussions)
 - **Bug reports** Open an [issue](https://github.com/Pinkish-Warrior/PublishFlow/issues)
-- **Security issues** See [SECURITY.md](./SECURITY.md)
+- **Security issues** See [SECURITY.md](./docs/SECURITY.md)
 
 ## Additional Resources
 
